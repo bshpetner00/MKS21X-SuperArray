@@ -34,5 +34,21 @@ public class SuperArray {
     joke += "]";
     return joke;
   }
+  public String get(int i) {
+    if (i < 0 || i >= size()) {
+      return null;
+    }
+    return data[i];
+  }
+  public String set(int i, String s) {
+    if (i < 0 || i >= size()) {
+      return null;
+    }
+    else {
+      data[i] = s;
+      return data[i];
+    }
+  }
+
 
 }
