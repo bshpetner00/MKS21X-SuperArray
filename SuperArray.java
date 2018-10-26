@@ -21,7 +21,7 @@ public class SuperArray {
   		size += 1;
   		return true;
   	}
-  	else if (size == data.length) {
+  	else if (size >= data.length) {
   		resize();
   		add(str); //dank recursion >:)
   	}
@@ -82,5 +82,25 @@ public class SuperArray {
   		}
   	}
   	return bool;
+  }
+  public int indexOf(String str) {
+  	int i = 0;
+  	while (i < data.length-1) {
+  		if (data[i].equals(str)) {
+  			return i;
+  		}
+  		i++;
+  	}
+  	return -1;
+  }
+  public int lastIndexOf(String str) {
+  	int i = data.length-1;
+  	while (i > 0) {
+  		if (data[i].equals(str)) {
+  			return i;
+  		}
+  		i -= 1;
+  	}
+  	return -1;
   }
 }
