@@ -21,6 +21,10 @@ public class SuperArray {
   		size += 1;
   		return true;
   	}
+  	else if (size == data.length) {
+  		resize();
+  		add(str); //dank recursion >:)
+  	}
   	return false;
   }
   public String toStringDebug() {
@@ -61,6 +65,22 @@ public class SuperArray {
       return oldVal;
     }
   }
-
-
+  private void resize() {
+  	String[] resizedArray = new String [data.length+1];
+  	int i = 0;
+  	for (String s:data) {
+  		resizedArray[i] = data[i];
+  		i++;
+  	}
+  	data = resizedArray;
+  }
+  public boolean contains(String str) {
+  	boolean bool = false;
+  	for (String s:data) {
+  		if (s.equals(str)) {
+  			bool = true;
+  		}
+  	}
+  	return bool;
+  }
 }
