@@ -7,6 +7,7 @@ public class SuperArray {
   }
   public void clear() {
     size = 0;
+    data = new String[10];
   }
   public int size() {
     return size;
@@ -15,33 +16,32 @@ public class SuperArray {
     return size == 0;
   }
   public boolean add(String str) {
-  	int i = 0;
-  	for (String s: data) {
-  		if (s.equals(null) == false) {
-  			i += 1;
-  		}
-  		i += 1;
+  	if (size < data.length) {
+  		data[size] = str;
+  		size += 1;
+  		return true;
   	}
-  	data[i] = str;
-  	return true;
+  	return false;
   }
   public String toStringDebug() {
     String joke = "[";
-    for (String x:data) {
-      joke += x;
-      joke += ", ";
-    }
+	    for (int i = 0; i < data.length-1;i++) {
+	        joke += data[i];
+	        joke += ", ";
+	      }
+	    joke += data[data.length-1];
     joke += "]";
     return joke;
   }
   public String toString() {
     String joke = "[";
-    for (String x:data) {
-      if (x.equals(null) == false) {
-        joke += x;
-        joke += ", ";
-      }
-    }
+    if (data[0] != null) {
+	    for (int i = 0; i < size-1;i++) {
+	        joke += data[i];
+	        joke += ", ";
+	      }
+	    joke += data[size-1];
+	    }
     joke += "]";
     return joke;
   }
