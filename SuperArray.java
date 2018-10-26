@@ -56,8 +56,9 @@ public class SuperArray {
       return null;
     }
     else {
+      String oldVal = data[i];
       data[i] = s;
-      return data[i];
+      return oldVal;
     }
   }
 
