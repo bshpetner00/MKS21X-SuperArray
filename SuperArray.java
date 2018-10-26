@@ -52,11 +52,11 @@ public class SuperArray {
     return data[i];
   }
   public String set(int i, String s) {
+  	String oldVal = data[i];
     if (i < 0 || i >= size()) {
       return null;
     }
     else {
-      String oldVal = data[i];
       data[i] = s;
       return oldVal;
     }
