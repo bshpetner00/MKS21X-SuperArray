@@ -103,4 +103,15 @@ public class SuperArray {
   	}
   	return -1;
   }
+  public void add(int i, String s) {
+    if (i < 0 || i > size()) {
+      System.out.println("try a different index buddy, this one's no good");
+    }
+    resize();
+    int jew = i;
+    for (String str:Arrays.copyOfRange(i,data.length-1)) {
+      data[jew+1] = data[jew];
+      jew++;
+    }
+  }
 }
