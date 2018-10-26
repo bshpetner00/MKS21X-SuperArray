@@ -9,10 +9,21 @@ public class SuperArray {
     size = 0;
   }
   public int size() {
-    return data.length;
+    return size;
   }
   public boolean isEmpty() {
-    return data.length > 0;
+    return size == 0;
+  }
+  public boolean add(String str) {
+  	int i = 0;
+  	for (String s: data) {
+  		if (s.equals(null) == false) {
+  			i += 1;
+  		}
+  		i += 1;
+  	}
+  	data[i] = str;
+  	return true;
   }
   public String toStringDebug() {
     String joke = "[";
