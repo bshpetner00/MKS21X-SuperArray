@@ -1,6 +1,6 @@
 public class driver {
      public static void main(String[] args) {
-          System.out.println();
+          /*System.out.println();
           //SA0 = ((test)) empty list, size 10 (for testing phase 1)
           SuperArray SA0 = new SuperArray();
           System.out.println(SA0.toString()); //[]
@@ -43,6 +43,16 @@ public class driver {
           System.out.println(SA3.indexOf("fish")); //-1
           SA3.set(7, "fortnite");
           System.out.println(SA3.indexOf("fortnite")); //3
-          System.out.println(SA3.lastIndexOf("fortnite")); //7
+          System.out.println(SA3.lastIndexOf("fortnite")); //7*/
+          SuperArray cap = new SuperArray();
+          cap.add("a");
+          cap.add("b");
+          cap.add("c");
+          cap.add("d");
+          cap.add(1,"a.1");
+          System.out.println(cap.toStringDebug());
+          System.out.println(cap.toString());
+          cap.remove(0);
+          System.out.println(cap.toString());
      }
 }

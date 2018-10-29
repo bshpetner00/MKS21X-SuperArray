@@ -108,10 +108,47 @@ public class SuperArray {
       System.out.println("try a different index buddy, this one's no good");
     }
     resize();
-    int jew = i;
-    for (String str:Arrays.copyOfRange(i,data.length-1)) {
-      data[jew+1] = data[jew];
-      jew++;
+    String[] pebbles = new String[data.length];
+    int special = 0;
+    for (int index = 0; index < data.length; index++) {
+      if (index == i) {
+      	pebbles[index] = s;
+      }
+      else {
+      	pebbles[index] = data[special];
+      	special += 1;
+      }
     }
+    data = pebbles;
+  }
+  public String remove(int index) {
+  	if (index < 0 || index > size()) {
+      System.out.println("try a different index buddy, this one's no good");
+    }
+  	String deadMan = data[index];
+  	String[] shorty = new String[data.length];
+  	int i = 0;
+  	int oldEye = 0;
+  	while (oldEye < data.length) {
+  		if (oldEye != index) {
+  			shorty[i] = data[oldEye];
+  			i++;
+  			oldEye++;
+  		}
+  		else {
+  			oldEye++;
+  		}
+  	}
+  	data = shorty;
+  	return deadMan;
+  }
+  public boolean remove(String deadMan) {
+  	if (this.contains(deadMan)) {
+  		this.remove(this.indexOf(deadman))
+  		return true;
+  	}
+  	else {
+  		return false;
+  	}
   }
 }
