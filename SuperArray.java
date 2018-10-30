@@ -8,6 +8,10 @@ public class SuperArray {
   public SuperArray(int capacity) {
   	size = 0;
   	data = new String[capacity];
+  	try {
+  		data = new String[capacity];
+  		size = 0;
+  	} 
   	catch(NegativeArraySizeException e) {
       System.out.println("Size can't be negative... try again fam.");
     }
@@ -58,14 +62,14 @@ public class SuperArray {
   }
   public String get(int i) {
     if (i < 0 || i >= size()) {
-      return null;
+      throw new IndexOutOfBoundsException();
     }
     return data[i];
   }
   public String set(int i, String s) {
   	String oldVal = data[i];
     if (i < 0 || i >= size()) {
-      return null;
+      throw new IndexOutOfBoundsException();
     }
     else {
       data[i] = s;
@@ -83,8 +87,8 @@ public class SuperArray {
   }
   public boolean contains(String str) {
   	boolean bool = false;
-  	for (String s:data) {
-  		if (s.equals(str)) {
+  	for (int i = 0;i < size(); i++){
+  		if (str.equals(data[i])) {
   			bool = true;
   		}
   	}
@@ -93,7 +97,7 @@ public class SuperArray {
   public int indexOf(String str) {
   	int i = 0;
   	while (i < data.length-1) {
-  		if (data[i].equals(str)) {
+  		if (str.equals(data[i])) {
   			return i;
   		}
   		i++;
@@ -103,7 +107,7 @@ public class SuperArray {
   public int lastIndexOf(String str) {
   	int i = data.length-1;
   	while (i > 0) {
-  		if (data[i].equals(str)) {
+  		if (str.equals(data[i])) {
   			return i;
   		}
   		i -= 1;
@@ -112,25 +116,28 @@ public class SuperArray {
   }
   public void add(int i, String s) {
     if (i < 0 || i > size()) {
-      System.out.println("try a different index buddy, this one's no good");
+      throw new IndexOutOfBoundsException();
     }
     resize();
     String[] pebbles = new String[data.length];
     int special = 0;
-    for (int index = 0; index < data.length; index++) {
+    int index = 0;
+    while (index < pebbles.length) {
       if (index == i) {
       	pebbles[index] = s;
+      	index++;
       }
       else {
       	pebbles[index] = data[special];
-      	special += 1;
+      	special++;
+      	index++;
       }
     }
     data = pebbles;
   }
   public String remove(int index) {
   	if (index < 0 || index > size()) {
-      return null;
+      throw new IndexOutOfBoundsException();
     }
   	String deadMan = data[index];
   	String[] shorty = new String[data.length];
