@@ -5,6 +5,13 @@ public class SuperArray {
     size = 0;
     data = new String[10];
   }
+  public SuperArray(int capacity) {
+  	size = 0;
+  	data = new String[capacity];
+  	catch(NegativeArraySizeException e) {
+      System.out.println("Size can't be negative... try again fam.");
+    }
+  }
   public void clear() {
     size = 0;
     data = new String[10];
@@ -66,7 +73,7 @@ public class SuperArray {
     }
   }
   private void resize() {
-  	String[] resizedArray = new String [data.length+1];
+  	String[] resizedArray = new String [data.length*2+1];
   	int i = 0;
   	for (String s:data) {
   		resizedArray[i] = data[i];
@@ -123,7 +130,7 @@ public class SuperArray {
   }
   public String remove(int index) {
   	if (index < 0 || index > size()) {
-      System.out.println("try a different index buddy, this one's no good");
+      return null;
     }
   	String deadMan = data[index];
   	String[] shorty = new String[data.length];
@@ -144,7 +151,7 @@ public class SuperArray {
   }
   public boolean remove(String deadMan) {
   	if (this.contains(deadMan)) {
-  		this.remove(this.indexOf(deadman))
+  		this.remove(this.indexOf(deadMan));
   		return true;
   	}
   	else {
